@@ -264,6 +264,19 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
     private boolean down;
     //数据不足�?屏时是否打开上拉加载模式
     private boolean loadNoFull = false;
+
+    private float mLastMotionY;
+    //之前手势的方向，为了解决同一个触点前后移动方向不同导致后�?个方向会刷新的问题，
+    //这里Mode.DISABLED无意义，只是�?个初始�?�，和上�?/下拉方向进行区分
+    //private PullMode mLastDirection = PullMode.DISABLED;
+   // private int mDirection = 0;
+    //当子控件移动到尽头时才开始计算初始点的位�?
+    //private float mStartPoint;
+    //private boolean up;
+    //private boolean down;
+    //数据不足�?屏时是否打开上拉加载模式
+    //private boolean loadNoFull = false;
+
     private Animation.AnimationListener mRefreshListener = new Animation.AnimationListener() {
         @Override
         public void onAnimationStart(Animation animation) {
@@ -885,6 +898,8 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
         }
         switch (action) {
             case MotionEvent.ACTION_DOWN:
+                //v21 updown
+                mLastMotionY = mInitialMotionY = ev.getY();
                 setTargetOffsetTopAndBottom(mOriginalOffsetTop - mCircleView.getTop(), true);
                 mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
                 mIsBeingDragged = false;
@@ -894,7 +909,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 }
                 Log.e(LOG_TAG, "Got ACTION_DOWN event in onInterceptTouchEvent.");
                 mInitialMotionY = initialMotionY;
-				/*
+
                 //v21 updown csdn version
 			    mStartPoint = mInitialMotionY;
 
@@ -903,7 +918,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 //但仍存在问题：当数据不满�?屏且设置可以上拉模式后，多次快�?�上拉会�?发上拉加�?
                 up = canChildScrollUp();
                 down = canChildScrollDown();	
-				*/
+
 				break;
             case MotionEvent.ACTION_MOVE:
                 if (mActivePointerId == INVALID_POINTER) {
@@ -913,11 +928,73 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 else
                     Log.e(LOG_TAG, "Got ACTION_MOVE event in onInterceptTouchEvent.");
 
+                //v20 updown
+                final int pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
+                if (pointerIndex < 0) {
+                    Log.e(LOG_TAG, "Got ACTION_MOVE event but have an invalid active pointer id in onInterceptTouchEvent.");
+                    return false;
+                }
+
                 final float y = getMotionEventY(ev, mActivePointerId);
+
                 if (y == -1) {
                     return false;
                 }
+                //v21 updown
+                //float yDiff = y - mStartPoint;
                 float yDiff = y - mInitialMotionY;
+
+                //若上个手势的方向和当前手势方向不�?致，返回
+                if((mLastDirection == PullMode.PULL_FROM_START && yDiff < 0) ||
+                        (mLastDirection == PullMode.PULL_FROM_END && yDiff > 0))
+                {
+                    return false;
+                }
+                //下拉或上拉时，子控件本身能够滑动时，记录当前手指位置，当其滑动到尽头时，
+                //mStartPoint作为下拉刷新或上拉加载的手势起点
+                if ((canChildScrollUp() && yDiff > 0) || (canChildScrollDown() && yDiff < 0))
+                {
+                    mStartPoint = y;
+                }
+
+                //下拉
+                if (yDiff > mTouchSlop)
+                {
+                    //若当前子控件能向下滑动，或�?�上个手势为上拉，则返回
+                    if (canChildScrollUp() || mLastDirection == PullMode.PULL_FROM_END)
+                    {
+                        mIsBeingDragged = false;
+                        return false;
+                    }
+                    if ((mMode == PullMode.PULL_FROM_START) || (mMode == PullMode.BOTH))
+                    {
+                        mLastMotionY = y;
+                        mIsBeingDragged = true;
+                        mLastDirection = PullMode.PULL_FROM_START;
+                    }
+                }
+                //上拉
+                else if (-yDiff > mTouchSlop) {
+                    //若当前子控件能向上滑动，或�?�上个手势为下拉，则返回
+                    if (canChildScrollDown() || mLastDirection == PullMode.PULL_FROM_START)
+                    {
+                        mIsBeingDragged = false;
+                        return false;
+                    }
+                    //若子控件不能上下滑动，说明数据不足一屏，若不满屏不加载，返回
+                    if (!up && !down && !loadNoFull)
+                    {
+                        mIsBeingDragged = false;
+                        return false;
+                    }
+                    if ((mMode == PullMode.PULL_FROM_END) || (mMode == PullMode.BOTH))
+                    {
+                        mLastMotionY = y;
+                        mIsBeingDragged = true;
+                        mLastDirection = PullMode.PULL_FROM_END;
+                    }
+                }
+
 //v21 updown
                 if (!canChildScrollUp() && yDiff > 0 && mMode.permitsPullFromStart()) {
                     mCurrentMode = PullMode.PULL_FROM_START;
@@ -1038,7 +1115,10 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
                 mIsBeingDragged = false;
 				//v21 updown csdn version
+                mLastMotionY = mInitialMotionY = ev.getY();
+
                 mStartPoint = mInitialMotionY;
+
                 up = canChildScrollUp();
                 down = canChildScrollDown();
                 break;
@@ -1053,18 +1133,80 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                     Log.e(LOG_TAG, "Got ACTION_MOVE event in onTouchEvent.");
                 if (mIsBeingDragged) {
                     final float y = MotionEventCompat.getY(ev, pointerIndex);
-                    float yDiff = y - mInitialMotionY;
-                    if (!canChildScrollUp() && yDiff > 0 && mMode.permitsPullFromStart()) {
-                        mCurrentMode = PullMode.PULL_FROM_START;
-                        Log.e(LOG_TAG, "Got yDiff > 0 when ACTION_MOVE event in onTouchEvent.");
-                    } else if (!canChildScrollDown() && yDiff < 0 && mMode.permitsPullFromEnd()) {
-                        mCurrentMode = PullMode.PULL_FROM_END;
-                        yDiff = -yDiff;
-                        Log.e(LOG_TAG, "Got yDiff < 0 when ACTION_MOVE event in onTouchEvent.");
+                    //v21 updown
+                    //float yDiff = y - mInitialMotionY;
+                    float yDiff = y - mStartPoint;
+                    float overscrollTopValue = yDiff * DRAG_RATE;//< mTotalDragDistance
+                    // User velocity passed min velocity; trigger a refresh
+                    if (overscrollTopValue > mTotalDragDistance) {
+                        // User movement passed distance; trigger a refresh
+                        Log.e(LOG_TAG, "Got overscrollTopValue > mTotalDragDistance when ACTION_MOVE event in onTouchEvent.");
+                        if (mLastDirection == PullMode.PULL_FROM_END) {
+                            return true;
+                        }
+                        if (mMode.permitsPullFromStart()) {
+                            mLastDirection = PullMode.PULL_FROM_START;
+                            mCurrentMode = PullMode.PULL_FROM_START;
+                            //startRefresh();
+                        }
+                    } else if (-overscrollTopValue > mTotalDragDistance) {
+                        Log.e(LOG_TAG, "Got -overscrollTopValue > mTotalDragDistance when ACTION_MOVE event in onTouchEvent.");
+                        if ((!up && !down && !loadNoFull) || mLastDirection == PullMode.PULL_FROM_START) {
+                            return true;
+                        }
+                        if (mMode.permitsPullFromEnd()) {
+                            mLastDirection = PullMode.PULL_FROM_END;
+                            mCurrentMode = PullMode.PULL_FROM_END;
+                            yDiff = -yDiff;
+                            //startLoad();
+                        }
                     } else {
-                        yDiff = 0;
-                        Log.e(LOG_TAG, "Got yDiff = 0 when ACTION_MOVE event in onTouchEvent.");
+                        Log.e(LOG_TAG, "Got overscrollTopValue between -mTotalDragDistance and mTotalDragDistancewhen ACTION_MOVE event in onTouchEvent.");
+                        if (!up && !down && yDiff < 0 && !loadNoFull) {
+                            return true;
+                        }
+                        // Just track the user's movement
+                        //根据手指移动距离设置进度条显示的百分�?
+//                        setTriggerPercentage(
+//                                mAccelerateInterpolator.getInterpolation(
+//                                        Math.abs(yDiff) / mDistanceToTriggerSync));
+//                        updateContentOffsetTop((int) yDiff);
+//                        if (mTarget.getTop() == getPaddingTop()) {
+//                            // If the user puts the view back at the top, we
+//                            // don't need to. This shouldn't be considered
+//                            // cancelling the gesture as the user can restart from the top.
+//                            removeCallbacks(mCancel);
+//                            mLastDirection = PullMode.DISABLED;
+//                        } else {
+//                            mDirection = (yDiff > 0 ? 1 : -1);
+//                            updatePositionTimeout();
+//                        }
                     }
+                    //////mLastMotionY = y;
+
+
+//                    if((mLastDirection == PullMode.PULL_FROM_START && yDiff < 0) ||
+//                            (mLastDirection == PullMode.PULL_FROM_END && yDiff > 0))
+//                    {
+//                        return true;
+//                    }
+//
+//                    if (!mIsBeingDragged && (yDiff > 0 && mLastDirection == PullMode.PULL_FROM_START)
+//                            || (yDiff < 0 && mLastDirection == PullMode.PULL_FROM_END)) {
+//                        mIsBeingDragged = true;
+//                    }
+//
+//                    if (!canChildScrollUp() && yDiff > 0 && mMode.permitsPullFromStart()) {
+//                        mCurrentMode = PullMode.PULL_FROM_START;
+//                        Log.e(LOG_TAG, "Got yDiff > 0 when ACTION_MOVE event in onTouchEvent.");
+//                    } else if (!canChildScrollDown() && yDiff < 0 && mMode.permitsPullFromEnd()) {
+//                        mCurrentMode = PullMode.PULL_FROM_END;
+//                        yDiff = -yDiff;
+//                        Log.e(LOG_TAG, "Got yDiff < 0 when ACTION_MOVE event in onTouchEvent.");
+//                    } else {
+//                        yDiff = 0;
+//                        Log.e(LOG_TAG, "Got yDiff = 0 when ACTION_MOVE event in onTouchEvent.");
+//                    }
                     final float overscrollTop = yDiff * DRAG_RATE;
                     mProgress.showArrow(true);
                     float originalDragPercent = overscrollTop / mTotalDragDistance;
@@ -1150,6 +1292,8 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
             }
             case MotionEventCompat.ACTION_POINTER_DOWN: {
                 final int index = MotionEventCompat.getActionIndex(ev);
+                //v21 updown
+                mLastMotionY = MotionEventCompat.getY(ev, index);
                 mActivePointerId = MotionEventCompat.getPointerId(ev, index);
                 break;
             }

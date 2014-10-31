@@ -44,7 +44,31 @@
     <favorites_list name="SwipeRefreshLayoutUpDownExample" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="3330">
+              <caret line="69" column="28" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SwipeRefreshLayoutUpDown.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.1237624" vertical-offset="17854" max-vertical-offset="21525">
+              <caret line="1238" column="37" selection-start-line="1238" selection-start-column="37" selection-end-line="1238" selection-end-column="37" />
+              <folding>
+                <element signature="e#26506#26507#0" expanded="true" />
+                <element signature="e#26551#26552#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -590,8 +614,8 @@
         <option value="$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/MaterialProgressDrawable.java" />
         <option value="$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/CircleImageViewUpDown.java" />
         <option value="$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java" />
       </list>
     </option>
   </component>
@@ -646,6 +670,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -675,7 +700,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swiperefreshlayoutupdown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SwipeRefreshLayoutUpDownExample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SwipeRefreshLayoutUpDownExample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swiperefreshlayoutupdown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -701,7 +752,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -904,20 +954,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="35" y="23" width="1393" height="805" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299566" sideWeight="0.49962714" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31204644" sideWeight="0.71280533" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4081042" sideWeight="0.6301075" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39073807" sideWeight="0.47576436" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3164006" sideWeight="0.20799407" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39477503" sideWeight="0.4988897" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40783745" sideWeight="0.4988897" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3164006" sideWeight="0.7920059" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280116" sideWeight="0.4988897" order="6" side_tool="false" content_ui="tabs" />
@@ -925,7 +976,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20059216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20059216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32510886" sideWeight="0.4974093" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -933,7 +984,6 @@
       <window_info id="AdbRemote" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31204644" sideWeight="0.71280533" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle View" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="AdbCommander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -960,165 +1010,171 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>950</line>
+          <line>1027</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1005</line>
+          <line>1082</line>
           <properties />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>951</line>
+          <line>1028</line>
           <properties />
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1041</line>
+          <line>1121</line>
           <properties />
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>895</line>
+          <line>910</line>
           <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1075</line>
+          <line>1217</line>
           <properties />
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>993</line>
+          <line>1070</line>
           <properties />
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1139</line>
+          <line>1281</line>
           <properties />
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>636</line>
+          <line>649</line>
           <properties />
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>616</line>
+          <line>629</line>
           <properties />
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>623</line>
+          <line>636</line>
           <properties />
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>627</line>
+          <line>640</line>
           <properties />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1145</line>
+          <line>1287</line>
           <properties />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1222</line>
+          <line>1366</line>
           <properties />
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>511</line>
+          <line>524</line>
           <properties />
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>364</line>
+          <line>377</line>
           <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1297</line>
+          <line>1441</line>
           <properties />
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>300</line>
+          <line>313</line>
           <properties />
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1269</line>
+          <line>1413</line>
           <properties />
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1315</line>
+          <line>1459</line>
           <properties />
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1290</line>
+          <line>1434</line>
           <properties />
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1254</line>
+          <line>1398</line>
           <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>315</line>
+          <line>328</line>
           <properties />
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>1212</line>
+          <line>1356</line>
           <properties />
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>588</line>
+          <line>601</line>
           <properties />
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
-          <line>780</line>
+          <line>793</line>
           <properties />
           <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java</url>
+          <line>458</line>
+          <properties />
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="82" />
+      <option name="time" value="83" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -1140,7 +1196,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16215" max-vertical-offset="19005">
           <caret line="1152" column="51" selection-start-line="1152" selection-start-column="36" selection-end-line="1152" selection-end-column="54" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1169,7 +1228,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="11631" max-vertical-offset="17220">
           <caret line="859" column="40" selection-start-line="859" selection-start-column="29" selection-end-line="859" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1198,7 +1260,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12045" max-vertical-offset="17250">
           <caret line="883" column="0" selection-start-line="883" selection-start-column="0" selection-end-line="883" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1227,7 +1292,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12315" max-vertical-offset="15075">
           <caret line="876" column="21" selection-start-line="876" selection-start-column="21" selection-end-line="876" selection-end-column="21" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1256,7 +1324,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12521" max-vertical-offset="16226">
           <caret line="692" column="20" selection-start-line="692" selection-start-column="20" selection-end-line="692" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1285,7 +1356,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="445" max-vertical-offset="15270">
           <caret line="56" column="3" selection-start-line="56" selection-start-column="3" selection-end-line="56" selection-end-column="3" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1314,7 +1388,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="15270">
           <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1336,7 +1413,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="17190">
           <caret line="137" column="4" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1351,7 +1431,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="49" max-vertical-offset="16950">
           <caret line="125" column="27" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1459,7 +1542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33860046" vertical-offset="180" max-vertical-offset="720">
           <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,7 +1549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="3105">
           <caret line="28" column="27" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1478,18 +1559,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java">
+    <entry file="file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41860464" vertical-offset="12045" max-vertical-offset="19335">
-          <caret line="895" column="49" selection-start-line="895" selection-start-column="49" selection-end-line="895" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="3105">
+          <caret line="69" column="28" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/usabusi/swiperefreshlayoutupdown/view/SwipeRefreshLayoutUpDown.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="545" max-vertical-offset="3105">
-          <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
+        <state vertical-scroll-proportion="-1.1237624" vertical-offset="17854" max-vertical-offset="21525">
+          <caret line="1238" column="37" selection-start-line="1238" selection-start-column="37" selection-end-line="1238" selection-end-column="37" />
+          <folding>
+            <element signature="e#26506#26507#0" expanded="true" />
+            <element signature="e#26551#26552#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
