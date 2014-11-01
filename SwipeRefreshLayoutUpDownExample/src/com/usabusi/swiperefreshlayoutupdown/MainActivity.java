@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 import com.usabusi.swiperefreshlayoutupdown.R;
 import com.usabusi.swiperefreshlayoutupdown.view.SwipeRefreshLayoutUpDown;
-import com.usabusi.swiperefreshlayoutupdown.view.SwipeRefreshLayoutUpDown.OnLoadListener;
+//import com.usabusi.swiperefreshlayoutupdown.view.SwipeRefreshLayoutUpDown.OnLoadListener;
 import com.usabusi.swiperefreshlayoutupdown.view.SwipeRefreshLayoutUpDown.OnRefreshListener;
 
 //http://stackoverflow.com/questions/24413680/swiperefreshlayout-behind-actionbar/26494724#26494724
@@ -43,7 +43,7 @@ import com.usabusi.swiperefreshlayoutupdown.view.SwipeRefreshLayoutUpDown.OnRefr
 
 
 @SuppressLint("ResourceAsColor")
-public class MainActivity extends Activity implements OnRefreshListener, OnLoadListener{
+public class MainActivity extends Activity implements OnRefreshListener{
 
     protected ListView mListView;
     private ArrayAdapter<String> mListAdapter;
@@ -61,7 +61,7 @@ public class MainActivity extends Activity implements OnRefreshListener, OnLoadL
 
         mSwipeLayout = (SwipeRefreshLayoutUpDown) findViewById(R.id.swipe_container);
         mSwipeLayout.setOnRefreshListener(this);
-        mSwipeLayout.setOnLoadListener(this);
+        //mSwipeLayout.setOnLoadListener(this);//does not use it now
         // mSwipeLayout.setColor
         mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
 	                            android.R.color.holo_green_light,
@@ -171,46 +171,46 @@ public class MainActivity extends Activity implements OnRefreshListener, OnLoadL
         }.execute();
     }
 
-    @Override
-    public void onLoad() {
-//        values.add("Add " + values.size());
-//        values.add("Add " + values.size());
-//        values.add("Add " + values.size());
-//        values.add("Add " + values.size());
-//        values.add("Add " + values.size());
-//        values.add("Add " + values.size());
-//        values.add("Add " + values.size());
-//        new Handler().postDelayed(new Runnable() {
+//    @Override
+//    public void onLoad() {
+////        values.add("Add " + values.size());
+////        values.add("Add " + values.size());
+////        values.add("Add " + values.size());
+////        values.add("Add " + values.size());
+////        values.add("Add " + values.size());
+////        values.add("Add " + values.size());
+////        values.add("Add " + values.size());
+////        new Handler().postDelayed(new Runnable() {
+////            @Override
+////            public void run() {
+////                mSwipeLayout.setLoading(false);
+////                mListAdapter.notifyDataSetChanged();
+////            }
+////        }, 1000);
+//        new AsyncTask<Void, Void, Void>() {
 //            @Override
-//            public void run() {
-//                mSwipeLayout.setLoading(false);
+//            protected Void doInBackground(Void... params) {
+//                try {
+//                    Thread.sleep(500); // 0.5 seconds
+//                    values.add("Add " + values.size());
+//                    values.add("Add " + values.size());
+//                    values.add("Add " + values.size());
+//                    values.add("Add " + values.size());
+//                    values.add("Add " + values.size());
+//                    values.add("Add " + values.size());
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Void result) {
+//                super.onPostExecute(result);
+//                mSwipeLayout.setRefreshing(false);
 //                mListAdapter.notifyDataSetChanged();
 //            }
-//        }, 1000);
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    Thread.sleep(500); // 0.5 seconds
-                    values.add("Add " + values.size());
-                    values.add("Add " + values.size());
-                    values.add("Add " + values.size());
-                    values.add("Add " + values.size());
-                    values.add("Add " + values.size());
-                    values.add("Add " + values.size());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void result) {
-                super.onPostExecute(result);
-                mSwipeLayout.setLoading(false);
-                mListAdapter.notifyDataSetChanged();
-            }
-        }.execute();
-
-    }
+//        }.execute();
+//
+//    }
 }

@@ -250,7 +250,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
     //private OnRefreshListener mListener;
 	//private OnRefreshListener mOnRefreshListener;
     //private boolean mRefreshing = false;
-    private OnLoadListener mloadListener;
+    //private OnLoadListener mloadListener;
 	private boolean mLoading = false;
 
 
@@ -311,11 +311,11 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
             }
             mCurrentTargetOffsetTop = mCircleView.getTop();
             //v21 updown loadmore
-            mCurrentTargetOffsetBottom = mCircleView.getTop();//mCircleView.getBottom();
+            //mCurrentTargetOffsetBottom = mCircleView.getTop();//mCircleView.getBottom();
         }
     };
 
-	private Animation.AnimationListener mLoadListener = new Animation.AnimationListener() {
+/*	private Animation.AnimationListener mLoadListener = new Animation.AnimationListener() {
         @Override
         public void onAnimationStart(Animation animation) {
         }
@@ -341,15 +341,16 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 setColorViewAlpha(MAX_ALPHA);
                 // Return the circle to its start position
                 if (mScale) {
-                    setAnimationProgress(0 /* animation complete and view is hidden */);
+                    setAnimationProgress(0);
                 } else {
                     setTargetOffsetTopAndBottom(mOriginalOffsetTop - mCurrentTargetOffsetTop,
-                            true /* requires update */);
+                            true );
                 }
             }
             mCurrentTargetOffsetTop = mCircleView.getTop();
         }
     };
+	*/
     private void setColorViewAlpha(int targetAlpha) {
         mCircleView.getBackground().setAlpha(targetAlpha);
         mProgress.setAlpha(targetAlpha);
@@ -493,9 +494,10 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
     }
     //v21 updown
     //onLoadMore
+	/*
     public void setOnLoadListener(OnLoadListener loadlistener) {
         mloadListener = loadlistener;
-    }
+    }*/
     /**
      * Pre API 11, alpha is used to make the progress circle appear instead of scale.
      */
@@ -536,7 +538,8 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
      *
      * @param loading Whether or not the view should show load progress.
      */
-    public void setLoading(boolean loading) {
+    /*
+	public void setLoading(boolean loading) {
         if (loading && mRefreshing != loading) {
             // scale and show
             mLoading = loading;
@@ -549,14 +552,14 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 endTarget = (int) mSpinnerFinalOffset;
             }
             setTargetOffsetTopAndBottom(endTarget - mCurrentTargetOffsetTop,
-                    true /* requires update */);
+                    true );
             mNotify = false;
             startScaleUpAnimation(mLoadListener);
         } else {
-            setLoading(loading, false /* notify */);
+            setLoading(loading, false );
         }
     }
-	
+	*/
     private void startScaleUpAnimation(AnimationListener listener) {
         mCircleView.setVisibility(View.VISIBLE);
         if (android.os.Build.VERSION.SDK_INT >= 11) {
@@ -606,7 +609,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
             }
         }
     }
-
+/*
     private void setLoading(boolean loading, final boolean notify) {
         if (mLoading != loading) {
             mNotify = notify;
@@ -619,7 +622,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
             }
         }
     }
-	
+	*/
     private void startScaleDownAnimation(Animation.AnimationListener listener) {
         mScaleDownAnimation = new Animation() {
             @Override
@@ -716,10 +719,11 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
     public boolean isRefreshing() {
         return mRefreshing;
     }
-
+/*
     public boolean isLoading() {
         return mLoading;
     }
+	*/
     private void ensureTarget() {
         // Don't bother getting the parent height if the parent hasn't been laid
         // out yet.
@@ -845,26 +849,12 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
         ensureTarget();
 
         final int action = MotionEventCompat.getActionMasked(ev);
-//        if ( action == MotionEvent.ACTION_DOWN) {
-//            Log.e(LOG_TAG, "ACTION_DOWN in onInterceptTouchEvent");
-//        }
-//        else    if ( action == MotionEvent.ACTION_UP) {
-//            Log.e(LOG_TAG, "ACTION_UP in onInterceptTouchEvent");
-//        }
-//        else    if ( action == MotionEvent.ACTION_CANCEL) {
-//            Log.e(LOG_TAG, "ACTION_CANCEL in onInterceptTouchEvent");
-//        }
+
        if (mReturningToStart && action == MotionEvent.ACTION_DOWN) {
            mReturningToStart = false;
 		   Log.e(LOG_TAG, "mReturningToStart = false in onInterceptTouchEvent");
         }
-        //v 21 original
-  //      if (!isEnabled() || mReturningToStart || canChildScrollUp() || mRefreshing)
-        /*
-        if (!mRefreshing && isEnabled() && !mReturningToStart && mMode.permitsPullToRefresh()
-                && (!canChildScrollUp() || !canChildScrollDown()))
 
-        }*/
 
         if ( !isEnabled() || mReturningToStart || mRefreshing || mLoading)
         {
@@ -927,14 +917,14 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 }
                 else
                     Log.e(LOG_TAG, "Got ACTION_MOVE event in onInterceptTouchEvent.");
-
+				/*
                 //v20 updown
                 final int pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
                 if (pointerIndex < 0) {
                     Log.e(LOG_TAG, "Got ACTION_MOVE event but have an invalid active pointer id in onInterceptTouchEvent.");
                     return false;
                 }
-
+				*/
                 final float y = getMotionEventY(ev, mActivePointerId);
 
                 if (y == -1) {
@@ -948,6 +938,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 if((mLastDirection == PullMode.PULL_FROM_START && yDiff < 0) ||
                         (mLastDirection == PullMode.PULL_FROM_END && yDiff > 0))
                 {
+					Log.e(LOG_TAG, "Got yDiff > 0 or <0 when ACTION_MOVE event in onInterceptTouchEvent.");
                     return false;
                 }
                 //下拉或上拉时，子控件本身能够滑动时，记录当前手指位置，当其滑动到尽头时，
@@ -966,11 +957,15 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                         mIsBeingDragged = false;
                         return false;
                     }
-                    if ((mMode == PullMode.PULL_FROM_START) || (mMode == PullMode.BOTH))
+                    if (mMode.permitsPullFromStart())
                     {
                         mLastMotionY = y;
                         mIsBeingDragged = true;
                         mLastDirection = PullMode.PULL_FROM_START;
+                        mCurrentMode = PullMode.PULL_FROM_START;
+                        Log.e(LOG_TAG, "Got yDiff > 0 when ACTION_MOVE event in onInterceptTouchEvent.");
+                        mProgress.setAlpha(STARTING_PROGRESS_ALPHA);
+                        Log.e(LOG_TAG, "Got mProgress.setAlpha(STARTING_PROGRESS_ALPHA) in ACTION_MOVE event in onInterceptTouchEvent.");
                     }
                 }
                 //上拉
@@ -987,31 +982,17 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                         mIsBeingDragged = false;
                         return false;
                     }
-                    if ((mMode == PullMode.PULL_FROM_END) || (mMode == PullMode.BOTH))
+                    if (mMode.permitsPullFromEnd())
                     {
                         mLastMotionY = y;
                         mIsBeingDragged = true;
                         mLastDirection = PullMode.PULL_FROM_END;
+                        mCurrentMode = PullMode.PULL_FROM_END;
+                        yDiff = -yDiff;
+                        mProgress.setAlpha(STARTING_PROGRESS_ALPHA);
+                        Log.e(LOG_TAG, "Got mProgress.setAlpha(STARTING_PROGRESS_ALPHA) in ACTION_MOVE event in onInterceptTouchEvent.");
+                        Log.e(LOG_TAG, "Got yDiff < 0 when ACTION_MOVE event in onInterceptTouchEvent.");
                     }
-                }
-
-//v21 updown
-                if (!canChildScrollUp() && yDiff > 0 && mMode.permitsPullFromStart()) {
-                    mCurrentMode = PullMode.PULL_FROM_START;
-                    Log.e(LOG_TAG, "Got yDiff > 0 when ACTION_MOVE event in onInterceptTouchEvent.");
-                } else if (!canChildScrollDown() && yDiff < 0 && mMode.permitsPullFromEnd()) {
-                    mCurrentMode = PullMode.PULL_FROM_END;
-                    yDiff = -yDiff;
-                    Log.e(LOG_TAG, "Got yDiff < 0 when ACTION_MOVE event in onInterceptTouchEvent.");
-                } else {
-                    yDiff = 0;
-                    Log.e(LOG_TAG, "Got yDiff = 0 when ACTION_MOVE event in onInterceptTouchEvent.");
-                }
-
-                if (yDiff > mTouchSlop && !mIsBeingDragged) {
-                    mIsBeingDragged = true;
-                    mProgress.setAlpha(STARTING_PROGRESS_ALPHA);
-                    Log.e(LOG_TAG, "Got mProgress.setAlpha(STARTING_PROGRESS_ALPHA) in ACTION_MOVE event in onInterceptTouchEvent.");
                 }
                 break;
 
@@ -1053,32 +1034,11 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
     public boolean onTouchEvent(MotionEvent ev) {
         final int action = MotionEventCompat.getActionMasked(ev);
 
-//        if ( action == MotionEvent.ACTION_DOWN) {
-//            Log.e(LOG_TAG, "ACTION_DOWN in onTouchEvent");
-//        }
-//        else    if ( action == MotionEvent.ACTION_UP) {
-//            Log.e(LOG_TAG, "ACTION_UP in onTouchEvent");
-//        }
-//        else    if ( action == MotionEvent.ACTION_CANCEL) {
-//            Log.e(LOG_TAG, "ACTION_CANCEL in onTouchEvent");
-//        }
-        //Log.e(LOG_TAG, "Got an event in onTouchEvent.");
         if (mReturningToStart && action == MotionEvent.ACTION_DOWN) {
             mReturningToStart = false;
             Log.e(LOG_TAG, "mReturningToStart = false in onTouchEvent");
         }
-        /*
-        if (!mRefreshing && isEnabled() && !mReturningToStart && mMode.permitsPullToRefresh()
-                && (!canChildScrollUp() || !canChildScrollDown()))
 
-        }*/
-//        if (mRefreshing || !isEnabled() || mReturningToStart
-//          // added v21 updown loadmore
-//         || (!mMode.permitsPullToRefresh()) || (canChildScrollUp() && canChildScrollDown() )|| mLoading)
-//        if (!isEnabled() || mReturningToStart || canChildScrollUp()) {
-//            // Fail fast if we're not in a state where a swipe is possible
-//            return false;
-//        }
         if ( !isEnabled() || mReturningToStart || mRefreshing || mLoading)
         {
             boolean bisEnabled;
@@ -1099,6 +1059,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
             // Fail fast if we're not in a state where a swipe is possible
             return false;
         }
+        /*
         if (mMode.permitsPullFromBoth() &&
                 (canChildScrollUp() &&  canChildScrollDown() ) ) {
             boolean bcanChildScrollDown,bcanChildScrollUp;
@@ -1108,7 +1069,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
             Log.e(LOG_TAG, strLogout3);
             // Fail fast if we're not in a state where a swipe is possible
             return false;
-        }
+        }*/
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 Log.e(LOG_TAG, "Got ACTION_DOWN event in onTouchEvent.");
@@ -1182,31 +1143,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
 //                            updatePositionTimeout();
 //                        }
                     }
-                    //////mLastMotionY = y;
 
-
-//                    if((mLastDirection == PullMode.PULL_FROM_START && yDiff < 0) ||
-//                            (mLastDirection == PullMode.PULL_FROM_END && yDiff > 0))
-//                    {
-//                        return true;
-//                    }
-//
-//                    if (!mIsBeingDragged && (yDiff > 0 && mLastDirection == PullMode.PULL_FROM_START)
-//                            || (yDiff < 0 && mLastDirection == PullMode.PULL_FROM_END)) {
-//                        mIsBeingDragged = true;
-//                    }
-//
-//                    if (!canChildScrollUp() && yDiff > 0 && mMode.permitsPullFromStart()) {
-//                        mCurrentMode = PullMode.PULL_FROM_START;
-//                        Log.e(LOG_TAG, "Got yDiff > 0 when ACTION_MOVE event in onTouchEvent.");
-//                    } else if (!canChildScrollDown() && yDiff < 0 && mMode.permitsPullFromEnd()) {
-//                        mCurrentMode = PullMode.PULL_FROM_END;
-//                        yDiff = -yDiff;
-//                        Log.e(LOG_TAG, "Got yDiff < 0 when ACTION_MOVE event in onTouchEvent.");
-//                    } else {
-//                        yDiff = 0;
-//                        Log.e(LOG_TAG, "Got yDiff = 0 when ACTION_MOVE event in onTouchEvent.");
-//                    }
                     final float overscrollTop = yDiff * DRAG_RATE;
                     mProgress.showArrow(true);
                     float originalDragPercent = overscrollTop / mTotalDragDistance;
@@ -1250,34 +1187,44 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                     } else {
                         if (mProgress.getAlpha() < MAX_ALPHA
                                 && !isAnimationRunning(mAlphaMaxAnimation)) {
-								//V21 updown csdn version
-
-                            int progressBarHeight = getHeight();
-                            int progressBarBottom = getBottom();
-                            int progressBarTop = getTop();
-                            int top = 40;
-                            //http://stackoverflow.com/questions/26484907/setrefreshingtrue-does-not-show-indicator
-                            //?
-                            //https://code.google.com/p/android/issues/detail?id=77712
-                            //?
-                            //https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/BaseActivity.java
-                            //上下移动时初始位置，高度
-                            setProgressViewOffset(false,300,900);
-                                    //top - progressBarBottom+500 , top+300);
-                            Log.e(LOG_TAG, "setProgressViewOffset top - progressBarBottom when ACTION_MOVE event in onTouchEvent.");
-                            invalidate();
-//                            http://stackoverflow.com/questions/26493213/android-swiperefreshlayout-no-animation-on-fragment-creation/26640352#26640352
-//                            It depends on which API level you're building under - if you're using up to API 20 then you can just turn on setRefreshing(true), this will run the animation in the ActionBar, but in API 21 (Material Design) they changed the progress to be a spinner than is "pulled into view" before it spins
+//								//V21 updown csdn version
+//                            if (mLastDirection ==PullMode.PULL_FROM_END) {
+//                                int progressBarHeight = getHeight();
+//                                int progressBarBottom = getBottom();
+//                                int progressBarTop = getTop();
+//                                int top = 40;
+//                                //http://stackoverflow.com/questions/26484907/setrefreshingtrue-does-not-show-indicator
+//                                //?
+//                                //https://code.google.com/p/android/issues/detail?id=77712
+//                                //?
+//                                //https://github.com/google/iosched/blob/master/android/src/main/java/com/google/samples/apps/iosched/ui/BaseActivity.java
+////http://stackoverflow.com/questions/26484907/setrefreshingtrue-does-not-show-indicator
+//                            import android.view.Display;
+//                            import android.graphics.Point;
+////                                Display display = getDefaultDisplay();
+////                                Point size = new Point();
+////                                display.getSize(size);
+////                                int height = size.y;
+//                                setProgressViewOffset(false, 200, 500);
 //
-//                            You have 2 ways of getting around this in API 21: 1) shift the spinner down with setProgressViewOffset(), but remember to shift it back up afterwords (note that this works in px, while setDistanceToTriggerSync() uses dp) 2) make a duplicate spinner that is displayed when you're loading the data
-//
-//                            The more code-efficient solution is to use the existing spinner, but you have to be careful that you do reset its position
-//
-//                            If you need to calculate the pixel density, you can grab it from:
-//
-//                            DisplayMetrics metrics = new DisplayMetrics();
-//                            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-//                            float scale = metrics.density;
+//                                //上下移动时初始位置，高度
+//                                //setProgressViewOffset(false, 300, 900);
+//                                //top - progressBarBottom+500 , top+300);
+//                                Log.e(LOG_TAG, "setProgressViewOffset top - progressBarBottom when ACTION_MOVE event in onTouchEvent.");
+//                                invalidate();
+////                            http://stackoverflow.com/questions/26493213/android-swiperefreshlayout-no-animation-on-fragment-creation/26640352#26640352
+////                            It depends on which API level you're building under - if you're using up to API 20 then you can just turn on setRefreshing(true), this will run the animation in the ActionBar, but in API 21 (Material Design) they changed the progress to be a spinner than is "pulled into view" before it spins
+////
+////                            You have 2 ways of getting around this in API 21: 1) shift the spinner down with setProgressViewOffset(), but remember to shift it back up afterwords (note that this works in px, while setDistanceToTriggerSync() uses dp) 2) make a duplicate spinner that is displayed when you're loading the data
+////
+////                            The more code-efficient solution is to use the existing spinner, but you have to be careful that you do reset its position
+////
+////                            If you need to calculate the pixel density, you can grab it from:
+////
+////                            DisplayMetrics metrics = new DisplayMetrics();
+////                            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+////                            float scale = metrics.density;
+//                            }
                             // Animate the alpha
                             startProgressAlphaMaxAnimation();
                         }
@@ -1319,54 +1266,68 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
                 }
                 final int pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
                 final float y = MotionEventCompat.getY(ev, pointerIndex);
-                float yDiff = y - mInitialMotionY;
-                if (!canChildScrollUp() && yDiff > 0 && mMode.permitsPullFromStart()) {
-                    mCurrentMode = PullMode.PULL_FROM_START;
-                    Log.e(LOG_TAG, "Got yDiff > 0 when ACTION_UP event in onTouchEvent.");
-                } else if (!canChildScrollDown() && yDiff < 0 && mMode.permitsPullFromEnd()) {
-                    mCurrentMode = PullMode.PULL_FROM_END;
-                    yDiff = -yDiff;
-                    Log.e(LOG_TAG, "Got yDiff < 0 when ACTION_UP event in onTouchEvent.");
-                } else {
-                    yDiff = 0;
-                    Log.e(LOG_TAG, "Got yDiff = 0 when ACTION_UP event in onTouchEvent.");
-                }
-                final float overscrollTop = yDiff * DRAG_RATE;
-                //final float overscrollTop = (y - mInitialMotionY) * DRAG_RATE;
+                //float yDiff = y - mInitialMotionY;
+
+                float yDiff = y - mStartPoint;
+                //float overscrollTopValue = yDiff * DRAG_RATE;//< mTotalDragDistance
+                float overscrollTop = yDiff * DRAG_RATE;
                 mIsBeingDragged = false;
+                // User velocity passed min velocity; trigger a refresh
                 if (overscrollTop > mTotalDragDistance) {
-                    setRefreshing(true, true /* notify */);
-                    Log.e(LOG_TAG, "setRefreshing(true, true) ACTION_UP in onTouchEvent");
-                } else {
-                    String strLogout= String.format( "Got return false  in overscrollTop= %f,mTotalDragDistance=%f",overscrollTop,mTotalDragDistance);
-                    Log.e(LOG_TAG, strLogout);
-                    // cancel refresh
-                    mRefreshing = false;
-                    mProgress.setStartEndTrim(0f, 0f);
-                    Animation.AnimationListener listener = null;
-                    if (!mScale) {
-                        listener = new Animation.AnimationListener() {
-
-                            @Override
-                            public void onAnimationStart(Animation animation) {
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animation animation) {
-                                if (!mScale) {
-                                    startScaleDownAnimation(null);
-                                }
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animation animation) {
-                            }
-
-                        };
+                    // User movement passed distance; trigger a refresh
+                    Log.e(LOG_TAG, "Got overscrollTopValue > mTotalDragDistance when ACTION_MOVE event in onTouchEvent.");
+                    if (mLastDirection == PullMode.PULL_FROM_END) {
+                        String strLogout= String.format( "Got return false  in overscrollTop= %f,mTotalDragDistance=%f",overscrollTop,mTotalDragDistance);
+                        Log.e(LOG_TAG, strLogout);
+                        animateStop();//return true;
                     }
-                    animateOffsetToStartPosition(mCurrentTargetOffsetTop, listener);
-                    mProgress.showArrow(false);
+                    if (mMode.permitsPullFromStart()) {
+                        mLastDirection = PullMode.PULL_FROM_START;
+                        mCurrentMode = PullMode.PULL_FROM_START;
+                        //startRefresh();
+                        setRefreshing(true, true /* notify */);
+                        Log.e(LOG_TAG, "setRefreshing(true, true) ACTION_UP in onTouchEvent");
+                    }
+                } else if (-overscrollTop > mTotalDragDistance) {
+                    Log.e(LOG_TAG, "Got -overscrollTopValue > mTotalDragDistance when ACTION_MOVE event in onTouchEvent.");
+                    if ((!up && !down && !loadNoFull) || mLastDirection == PullMode.PULL_FROM_START) {
+                        String strLogout= String.format( "Got return false  in overscrollTop= %f,mTotalDragDistance=%f",overscrollTop,mTotalDragDistance);
+                        Log.e(LOG_TAG, strLogout);
+                        animateStop();//return true;
+                    }
+                    if (mMode.permitsPullFromEnd()) {
+                        mLastDirection = PullMode.PULL_FROM_END;
+                        mCurrentMode = PullMode.PULL_FROM_END;
+                        yDiff = -yDiff;
+                        setRefreshing(true, true /* notify */);
+                        Log.e(LOG_TAG, "setRefreshing(true, true) ACTION_UP in onTouchEvent");
+                        //startLoad();
+                    }
+                } else {
+                    Log.e(LOG_TAG, "Got overscrollTopValue between -mTotalDragDistance and mTotalDragDistancewhen ACTION_MOVE event in onTouchEvent.");
+                    if (!up && !down && yDiff < 0 && !loadNoFull) {
+                        String strLogout= String.format( "Got return false  in overscrollTop= %f,mTotalDragDistance=%f",overscrollTop,mTotalDragDistance);
+                        Log.e(LOG_TAG, strLogout);
+                        animateStop();//return true;
+                    }
+                    // Just track the user's movement
+                    //根据手指移动距离设置进度条显示的百分�?
+//                        setTriggerPercentage(
+//                                mAccelerateInterpolator.getInterpolation(
+//                                        Math.abs(yDiff) / mDistanceToTriggerSync));
+//                        updateContentOffsetTop((int) yDiff);
+//                        if (mTarget.getTop() == getPaddingTop()) {
+//                            // If the user puts the view back at the top, we
+//                            // don't need to. This shouldn't be considered
+//                            // cancelling the gesture as the user can restart from the top.
+//                            removeCallbacks(mCancel);
+//                            mLastDirection = PullMode.DISABLED;
+//                        } else {
+//                            mDirection = (yDiff > 0 ? 1 : -1);
+//                            updatePositionTimeout();
+//                        }
                 }
+
                 mActivePointerId = INVALID_POINTER;
 				//v21 updown csdn version
 				mLastDirection = PullMode.DISABLED;
@@ -1377,6 +1338,37 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
         return true;
     }
 
+    private void animateStop(){
+
+
+        // cancel refresh
+        mRefreshing = false;
+        mProgress.setStartEndTrim(0f, 0f);
+        Animation.AnimationListener listener = null;
+        if (!mScale) {
+            listener = new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationStart(Animation animation) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    if (!mScale) {
+                        startScaleDownAnimation(null);
+                    }
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                }
+
+            };
+        }
+        animateOffsetToStartPosition(mCurrentTargetOffsetTop, listener);
+        mProgress.showArrow(false);
+
+    }
     private void animateOffsetToCorrectPosition(int from, AnimationListener listener) {
         mFrom = from;
         mAnimateToCorrectPosition.reset();
@@ -1484,10 +1476,11 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
      * Classes that wish to be notified when the swipe gesture correctly
      * triggers a refresh should implement this interface.
      */
+	 /*
     public interface OnLoadListener {
         public void onLoad();
     }
-
+	*/
     /**
      * Classes that wish to be notified when the swipe gesture correctly
      * triggers a refresh should implement this interface.
@@ -1501,6 +1494,7 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
      * Simple AnimationListener to avoid having to implement unneeded methods in
      * AnimationListeners.
      */
+	 /*
     private class BaseAnimationListener implements Animation.AnimationListener {
         @Override
         public void onAnimationStart(Animation animation) {
@@ -1514,4 +1508,5 @@ public class SwipeRefreshLayoutUpDown extends ViewGroup {
         public void onAnimationRepeat(Animation animation) {
         }
     }
+	*/
 }
